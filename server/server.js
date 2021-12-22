@@ -1,5 +1,5 @@
 import express from "express";
-import devBundle from "./devBundle";
+import devBundleCompile from "./devBundle";
 import path from "path";
 import template from "./../template";
 import { MongoClient } from "mongodb";
@@ -28,9 +28,9 @@ const CURRENT_WORKING_DIR = process.cwd();
 const app = express();
 
 // This is only for development
-if (process.env.NODE_ENV === "development") {
-  devBundle.compile(app);
-}
+// if (process.env.NODE_ENV === "development") {
+devBundleCompile(app);
+// }
 
 app.use("/dist", express.static(path.join(CURRENT_WORKING_DIR, "dist")));
 
